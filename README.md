@@ -1,9 +1,9 @@
 ---
-Version: 1.2.1 
+Version: 2.0.0
 Title: M365 Apps Intune scripted dynamic install using Office Deployment Toolkit
-Authors: JankeSkanke, sandytsang
-Owner: JankeSkanke
-Date: 16/12/2022
+Authors: MattLavine, JankeSkanke, sandytsang
+Owner: MattLavine
+Date: 11/14/2024
 Description: Deploying M365 with Intune dynamically as a Win32App
 ---
   [![HitCount](https://hits.dwyl.com/msendpointmgr/m365apps.svg?style=flat)](http://hits.dwyl.com/msendpointmgr/m365apps)
@@ -218,5 +218,5 @@ Get URL from config.office.com :
 
 For more details and instructions go to [MSEndpointMgr Blog](https://msendpointmgr.com/2022/10/23/installing-m365-apps-as-win32-app-in-intune/)
 
-This solution has been developed by @JankeSkanke with assistance from @sandytsang and @maurice-daly
+This solution has been developed by @MattLavine and @JankeSkanke with assistance from @sandytsang and @maurice-daly
 
