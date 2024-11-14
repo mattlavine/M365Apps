@@ -13,19 +13,19 @@ function Write-LogEntry {
     )
     # Determine log file location
     $LogFilePath = Join-Path -Path $env:SystemRoot -ChildPath $("Temp\$FileName")
-	
+
     # Construct time stamp for log entry
     $Time = -join @((Get-Date -Format "HH:mm:ss.fff"), " ", (Get-WmiObject -Class Win32_TimeZone | Select-Object -ExpandProperty Bias))
-	
+
     # Construct date for log entry
     $Date = (Get-Date -Format "MM-dd-yyyy")
-	
+
     # Construct context for log entry
     $Context = $([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
-	
+
     # Construct final log entry
     $LogText = "<![LOG[$($Value)]LOG]!><time=""$($Time)"" date=""$($Date)"" component=""$($LogFileName)"" context=""$($Context)"" type=""$($Severity)"" thread=""$($PID)"" file="""">"
-	
+
     # Add value to log file
     try {
         Out-File -InputObject $LogText -Append -NoClobber -Encoding Default -FilePath $LogFilePath -ErrorAction Stop
@@ -141,15 +141,26 @@ try {
             $SetupExeVersion = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("$($SetupFolder)\teamsbootstrapper.exe").FileVersion 
             Write-LogEntry -Value "teamsbootstrapper.exe is running version $SetupExeVersion" -Severity 1
             if (Invoke-FileCertVerification -FilePath $SetupFilePath){
-                #Starting Office setup with configuration file               
+                #Starting New Teams setup with configuration file
                 Try {
                     #Running office installer
-                    Write-LogEntry -Value "Starting Teams Install with Win32App method" -Severity 1
+                    Write-LogEntry -Value "Starting New Teams Install with Win32App method" -Severity 1
                     $Install = Start-Process $SetupFilePath -ArgumentList "-p" -WindowStyle Hidden -PassThru -ErrorAction Stop
                     $Install.WaitForExit()
                 }
                 catch [System.Exception] {
-                    Write-LogEntry -Value  "Error running the Teams install. Errormessage: $($_.Exception.Message)" -Severity 3
+                    Write-LogEntry -Value  "Error running the New Teams install. Errormessage: $($_.Exception.Message)" -Severity 3
+                }
+                #Starting Classic Teams uninstall with configuration file
+                Try {
+                    #Running office installer
+                    Write-LogEntry -Value "Starting Classic Teams Uninstall with Win32App method" -Severity 1
+                    $Install = Start-Process $SetupFilePath -ArgumentList "-u" -WindowStyle Hidden -PassThru -ErrorAction Stop
+                    $Install.WaitForExit()
+                    Write-LogEntry -Value "Finished Classic Teams Uninstall" -Severity 1
+                }
+                catch [System.Exception] {
+                    Write-LogEntry -Value  "Error running the Classic Teams uninstall. Errormessage: $($_.Exception.Message)" -Severity 3
                 }
             }
             else {
@@ -161,7 +172,7 @@ try {
         }
     }
 catch [System.Exception] {
-    Write-LogEntry -Value  "Error finding  setup file. Errormessage: $($_.Exception.Message)" -Severity 3
+    Write-LogEntry -Value  "Error finding setup file. Errormessage: $($_.Exception.Message)" -Severity 3
 }
 
 }
