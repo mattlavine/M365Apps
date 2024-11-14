@@ -1,7 +1,7 @@
 ########################################################################
 # Detection Script for Office 365 Apps Install
-# Created by Matt Lavine (https://github.com/mattlavine)
-# Version 5
+# Created by Matt Lavine [@mattlavine](https://github.com/mattlavine)
+# Contains code forked from @JankeSkanke
 ########################################################################
 #DetectionScript
 function Write-LogEntry {

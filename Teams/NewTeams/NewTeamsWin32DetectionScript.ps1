@@ -1,3 +1,8 @@
+########################################################################
+# Detection Script for New Teams
+# Created by Matt Lavine [@mattlavine](https://github.com/mattlavine)
+# Contains code forked from @JankeSkanke
+########################################################################
 #DetectionScript
 function Write-LogEntry {
 	param (

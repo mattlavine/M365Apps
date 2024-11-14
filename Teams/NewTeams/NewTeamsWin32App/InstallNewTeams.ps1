@@ -1,3 +1,8 @@
+########################################################################
+# Installation Script for New Teams
+# Created by Matt Lavine [@mattlavine](https://github.com/mattlavine)
+# Contains code forked from @JankeSkanke
+########################################################################
 function Write-LogEntry {
     param (
         [parameter(Mandatory = $true, HelpMessage = "Value added to the log file.")]
