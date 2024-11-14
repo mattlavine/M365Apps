@@ -1,19 +1,26 @@
-<Configuration ID="9aa11e20-2e29-451a-b0ba-f1ae3e89d18d">
-  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise" MigrateArch="TRUE">
+<Configuration ID="0e8d02cb-f4ce-4ff7-8dbf-8288227a835e">
+  <Info Description="O365 Enterprise (NO TEAMS, VISIO, OR PROJECT), 64-bit with MigrateArch, Current Channel, Hide Installation, User-based Activation" />
+  <Add OfficeClientEdition="64" Channel="Current" MigrateArch="TRUE">
     <Product ID="O365ProPlusRetail">
-      <Language ID="en-us" />
+      <Language ID="MatchOS" Fallback="en-us" />
+      <Language ID="MatchPreviousMSI" />
       <ExcludeApp ID="Groove" />
       <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="Teams" />
       <ExcludeApp ID="Bing" />
     </Product>
   </Add>
   <Property Name="SharedComputerLicensing" Value="0" />
-  <Property Name="FORCEAPPSHUTDOWN" Value="TRUE" />
+  <Property Name="FORCEAPPSHUTDOWN" Value="FALSE" />
   <Property Name="DeviceBasedLicensing" Value="0" />
   <Property Name="SCLCacheOverride" Value="0" />
   <Updates Enabled="TRUE" />
+  <RemoveMSI />
   <AppSettings>
     <Setup Name="Company" Value="Company Name" />
+    <User Key="software\microsoft\office\16.0\excel\options" Name="defaultformat" Value="51" Type="REG_DWORD" App="excel16" Id="L_SaveExcelfilesas" />
+    <User Key="software\microsoft\office\16.0\powerpoint\options" Name="defaultformat" Value="27" Type="REG_DWORD" App="ppt16" Id="L_SavePowerPointfilesas" />
+    <User Key="software\microsoft\office\16.0\word\options" Name="defaultformat" Value="" Type="REG_SZ" App="word16" Id="L_SaveWordfilesas" />
   </AppSettings>
-  <Display Level="None" AcceptEULA="FALSE" />
+  <Display Level="None" AcceptEULA="TRUE" />
 </Configuration>

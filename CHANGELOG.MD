@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.0 - 11/14/24
+
+* Forked on 11/14/24 by [@mattlavine](https://github.com/mattlavine)
+
+* Updated Detection Scripts for O365 Suite + Project + Visio to check for the following conditions:
+   * Display Name of Associated Uninstall Registry Key (e.g. Microsoft 365 Apps for enterprise)
+   * Architecture of Installation (e.g. x64, x86)
+   * Media Type of Install (e.g. Local, CDN)
+   * Product Release ID (e.g. O365ProPlusRetail)
+   * App IDs Required to be Excluded from Installation (e.g. "groove", "lync", "bing")
+* Added New Outlook Detection and Uninstall scripts
+* Added Detection Scripts for Classic Teams Machine-Wide Installer and User-level installs
+* Added a New Teams Install and Uninstall Classic Teams combo script
+
 ## 1.2.1 - 16.12.2022
 
  * Added verification of the setup.exe downloaded by verify signature on file and root trust to certificate
